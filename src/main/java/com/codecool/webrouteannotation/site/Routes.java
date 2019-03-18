@@ -1,6 +1,7 @@
 package com.codecool.webrouteannotation.site;
 
 
+import static com.codecool.webrouteannotation.site.HttpMethod.GET;
 import static com.codecool.webrouteannotation.site.HttpMethod.POST;
 
 public class Routes {
@@ -10,7 +11,7 @@ public class Routes {
         return "This is the TEST1 Webroute!";
     }
 
-    @WebRoute(path = "/test2")
+    @WebRoute(method = GET, path = "/test2")
     public String test2() {
         return "This is the TEST2 Webroute!";
 

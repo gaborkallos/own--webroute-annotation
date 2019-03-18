@@ -32,7 +32,10 @@ public class Test {
                     String path = m.getAnnotation(WebRoute.class).path();
                     if (path.equals(httpExchange.getRequestURI().getPath())) {
                         try {
-                            response = (String) m.invoke(new Routes());
+                            String method = String.valueOf(m.getAnnotation(WebRoute.class).method());
+                            if(httpExchange.getRequestMethod().equals(method)) {
+                                response = (String) m.invoke(new Routes());
+                            }
                         } catch (IllegalAccessException | InvocationTargetException e) {
                             e.printStackTrace();
                             statusCode = 500;
